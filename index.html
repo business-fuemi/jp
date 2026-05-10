@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>コミッション</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #efeada;
+    --warm-white: #f7f5ec;
+    --ink: #1e2b26;
+    --ink-muted: #4a5e57;
+    --ink-faint: #c3c0aa;
+    --accent: #52796c;
+    --accent-light: #d4e2dc;
+    --accent-mid: #819b85;
+    --accent-dark: #3b584b;
+    --border: rgba(30,43,38,0.12);
+    --border-strong: rgba(30,43,38,0.22);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', 'Noto Sans JP', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(239,234,218,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 56px;
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--ink-muted);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    border: 1px solid var(--accent-light);
+    background: var(--accent-light);
+    padding: 4px 14px;
+    border-radius: 100px;
+    margin-bottom: 0.5rem;
+  }
+
+  /* PROFILE IMAGE */
+  .profile-img-wrap {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 1.25rem auto 0.75rem;
+    border: 2px solid var(--border-strong);
+    background: var(--cream);
+  }
+
+  .profile-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-artist-name {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.25rem !important;
+    font-style: italic;
+  }
+
+  .hero p {
+    color: var(--ink-muted);
+    font-size: 16px;
+    max-width: 480px;
+    margin: 0 auto 2rem;
+    font-weight: 300;
+  }
+
+  .hero-subtitle {
+    font-size: 13px !important;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint) !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 13px 30px;
+    border-radius: 3px;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    display: inline-block;
+    color: var(--ink-muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 13px 24px;
+    border: 1px solid var(--border-strong);
+    border-radius: 3px;
+    margin-left: 10px;
+    transition: color 0.2s, border-color 0.2s, transform 0.15s;
+  }
+
+  .btn-ghost:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 4.5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-sub {
+    color: var(--ink-muted);
+    font-weight: 300;
+    max-width: 560px;
+    margin-bottom: 3rem;
+  }
+
+  /* STATUS PILL */
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  .status-pill.open {
+    background: var(--accent-light);
+    color: var(--accent-dark);
+  }
+
+  .status-pill.closed {
+    background: #e8e4d4;
+    color: var(--ink-muted);
+  }
+
+  .status-pill.waitlist {
+    background: #ede8d0;
+    color: #6b5e2a;
+  }
+
+  .status-pill .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .status-pill.open .dot { animation: pulse 2s ease-in-out infinite; }
+
+  /* PRICING CARDS */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .pricing-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+  }
+
+  .pricing-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .pricing-card.featured {
+    border-color: var(--accent);
+    background: linear-gradient(160deg, var(--warm-white) 0%, #e4ede7 100%);
+  }
+
+  /* CARD IMAGE */
+  .card-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    position: relative;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .card-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--ink-faint);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: repeating-linear-gradient(
+      45deg,
+      var(--cream),
+      var(--cream) 6px,
+      var(--warm-white) 6px,
+      var(--warm-white) 12px
+    );
+  }
+
+  .card-image-placeholder svg {
+    width: 28px;
+    height: 28px;
+    opacity: 0.35;
+  }
+
+  /* LIGHTBOX TRIGGER */
+  .card-image.lightbox-trigger { cursor: zoom-in; }
+
+  .card-image.lightbox-trigger::after {
+    content: "⤢";
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(20,30,25,0.55);
+    color: #efeada;
+    font-size: 13px;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+  }
+
+  .card-image.lightbox-trigger:hover::after { opacity: 1; }
+
+  /* LIGHTBOX OVERLAY */
+  #lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(20,30,25,0.88);
+    backdrop-filter: blur(6px);
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    cursor: zoom-out;
+  }
+
+  #lightbox.active { display: flex; }
+
+  #lightbox img {
+    max-width: min(860px, 92vw);
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+    cursor: default;
+    animation: lb-in 0.2s ease;
+  }
+
+  @keyframes lb-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  #lightbox-close {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.5rem;
+    background: rgba(239,234,218,0.15);
+    border: 1px solid rgba(239,234,218,0.25);
+    color: #efeada;
+    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  #lightbox-close:hover { background: rgba(239,234,218,0.28); }
+
+  .featured-badge {
+    position: absolute;
+    top: -11px;
+    left: 1.5rem;
+    background: var(--accent);
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  .pricing-icon {
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .pricing-name {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+
+  .pricing-desc {
+    font-size: 13.5px;
+    color: var(--ink-muted);
+    font-weight: 300;
+    margin-bottom: 0.75rem;
+    min-height: 20px;
+  }
+
+  .pricing-price {
+    font-family: var(--serif);
+    font-size: 2rem;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-price span {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ink-muted);
+    font-weight: 300;
+  }
+
+  .pricing-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .pricing-features li {
+    font-size: 13.5px;
+    color: var(--ink-muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .pricing-features li::before {
+    content: "—";
+    color: var(--accent);
+    flex-shrink: 0;
+    font-size: 12px;
+    line-height: 1.9;
+  }
+
+  /* ADDONS */
+  .addon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .addon-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .addon-name {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .addon-desc {
+    font-size: 13px;
+    color: var(--ink-muted);
+    font-weight: 300;
+  }
+
+  .addon-price {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  /* DELIVERABLES & PAYMENT */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 620px) {
+    .two-col { grid-template-columns: 1fr; }
+  }
+
+  .info-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.75rem;
+  }
+
+  .info-card h3 {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    color: var(--ink);
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .info-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .info-list li {
+    font-size: 13.5px;
+    color: var(--ink-muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .info-list li::before {
+    content: "◦";
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* TOS */
+  .tos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .tos-item {
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--warm-white);
+  }
+
+  .tos-num {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--accent-mid);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .tos-item h4 {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .tos-item p {
+    font-size: 13px;
+    color: var(--ink-muted);
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  .tos-item p + p { margin-top: 0.5rem; }
+
+  /* PROCESS */
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--warm-white);
+  }
+
+  .process-step {
+    padding: 1.75rem 1.5rem;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+
+  .process-step:last-child { border-right: none; }
+
+  .step-num {
+    font-family: var(--serif);
+    font-size: 2rem;
+    color: var(--accent-mid);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+
+  .step-desc {
+    font-size: 12.5px;
+    color: var(--ink-muted);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* CTA */
+  .cta-section {
+    text-align: center;
+    background: var(--ink);
+    border-radius: 10px;
+    padding: 4rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto 4rem;
+  }
+
+  .cta-section .section-label { color: var(--accent-mid); }
+
+  .cta-section h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--cream);
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    line-height: 1.15;
+  }
+
+  .cta-section h2 em { font-style: italic; color: var(--accent-mid); }
+
+  .cta-section p {
+    color: var(--accent-mid);
+    font-weight: 300;
+    margin-bottom: 2rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-cta {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 13px 30px;
+    border-radius: 3px;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-cta:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--ink-faint);
+    font-size: 12px;
+    letter-spacing: 0.03em;
+  }
+
+  footer a {
+    color: var(--ink-muted);
+    text-decoration: none;
+  }
+
+  footer a:hover { color: var(--accent); }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1.2rem; }
+    .nav-links a { font-size: 11px; }
+    section { padding: 3rem 1.25rem; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .hero { padding: 3.5rem 1.25rem 3rem; }
+  }
+
+  @media (max-width: 480px) {
+    .process-steps { grid-template-columns: 1fr; }
+    .process-step { border-right: none; border-bottom: 1px solid var(--border); }
+    .process-step:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">commission ✦</a>
+  <ul class="nav-links">
+    <li><a href="https://business-fuemi.github.io/main/" aria-label="View English version">EN</a></li>
+    <li><a href="#pricing">料金</a></li>
+    <li><a href="#addons">追加料金</a></li>
+    <li><a href="#tos">規約</a></li>
+    <li><a href="#order">依頼</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">✦ コミッション受付中</div>
+  <div class="hero-tag">0 / 3枠</div>
+  <div class="profile-img-wrap">
+    <img src="profile.png" alt="Fuemi">
+  </div>
+  <p class="hero-artist-name">Fuemi</p>
+  <p class="hero-subtitle">illustration | design</p>
+  <a href="#order" class="btn-primary">依頼する</a>
+  <a href="#pricing" class="btn-ghost">料金を見る</a>
+</div>
+
+<hr class="divider">
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-label">✦ 料金</div>
+  <h2 class="section-title">ご依頼プラン</h2>
+  <p class="section-sub">表示価格はすべてUSDです。キャラクターの複雑さや内容によって、最終のお見積もりが変動する場合があります。追加オプションは別料金です。</p>
+
+  <div class="pricing-grid">
+
+    <div class="pricing-card">
+      <div class="card-image">
+        <img src="bust-up.png" alt="バストアップのコミッションサンプル">
+      </div>
+      <p class="pricing-icon">01 — バストアップ</p>
+      <h3 class="pricing-name">バストアップ</h3>
+      <span class="status-pill open" style="margin-bottom:1rem;display:inline-flex;"><span class="dot"></span>受付中</span>
+      <p class="pricing-desc">胸上あたりまでの構図です。</p>
+      <p class="pricing-price">15,600¥〜 </p>
+      <ul class="pricing-features">
+        <li>胸上あたりまでのトリミング</li>
+        <li>線画＋カラー仕上げ</li>
+        <li>シンプル背景または透過背景込み</li>
+        <li>修正は最大2回まで</li>
+      </ul>
+    </div>
+
+    <div class="pricing-card featured">
+      <span class="featured-badge">おすすめ</span>
+      <div class="card-image">
+        <img src="half-body.png" alt="ハーフボディのコミッションサンプル">
+      </div>
+      <p class="pricing-icon">02 — ハーフボディ</p>
+      <h3 class="pricing-name">ハーフボディ</h3>
+      <span class="status-pill open" style="margin-bottom:1rem;display:inline-flex;"><span class="dot"></span>受付中</span>
+      <p class="pricing-desc">腰上あたりまでの構図です。</p>
+      <p class="pricing-price">21,900¥〜 </p>
+      <ul class="pricing-features">
+        <li>腰・ヒップあたりまでのトリミング</li>
+        <li>線画＋カラー仕上げ</li>
+        <li>シンプル背景または透過背景込み</li>
+        <li>修正は最大2回まで</li>
+      </ul>
+    </div>
+
+    <div class="pricing-card">
+      <div class="card-image">
+        <img src="full-body.png" alt="全身イラストのコミッションサンプル">
+      </div>
+      <p class="pricing-icon">03 — 全身</p>
+      <h3 class="pricing-name">全身</h3>
+      <span class="status-pill open" style="margin-bottom:1rem;display:inline-flex;"><span class="dot"></span>受付中</span>
+      <p class="pricing-desc">頭から足先までの全身イラストです。</p>
+      <p class="pricing-price">25,000¥〜 </p>
+      <ul class="pricing-features">
+        <li>頭から足先までの全身描写</li>
+        <li>線画＋カラー仕上げ</li>
+        <li>シンプル背景または透過背景込み</li>
+        <li>修正は最大2回まで</li>
+      </ul>
+    </div>
+
+    <div class="pricing-card featured">
+      <span class="featured-badge">おすすめ</span>
+      <div class="card-image">
+        <img src="1koma-monochrome.png" alt="1コマモノクロのコミッションサンプル">
+      </div>
+      <p class="pricing-icon">04 — 1コマモノクロ</p>
+      <h3 class="pricing-name">1コマモノクロ</h3>
+      <span class="status-pill open" style="margin-bottom:1rem;display:inline-flex;"><span class="dot"></span>受付中</span>
+      <p class="pricing-desc">全身1点＋半身ポーズ1点を1コマ内にまとめたモノクロイラストです。</p>
+      <p class="pricing-price">31,300¥〜</p>
+      <ul class="pricing-features">
+        <li>全身イラスト1点を含みます</li>
+        <li>半身のポーズ・アクションイラスト1点を含みます</li>
+        <li>線画＋シンプルなグレースケール仕上げ</li>
+        <li>シンプル背景または透過背景込み</li>
+        <li>修正は最大2回まで</li>
+      </ul>
+    </div>
+
+  </div>
+  <p style="font-size: 12.5px; color: var(--ink-muted); margin-top: 1rem;">* 表示価格は、背景なし・標準的なキャラクターの複雑さを想定した開始価格です。正式なお見積もりはご依頼内容を確認したうえでご案内します。</p>
+</section>
+
+<hr class="divider">
+
+<!-- ADDONS -->
+<section id="addons">
+  <div class="section-label">✦ 追加オプション</div>
+  <h2 class="section-title">追加オプション</h2>
+  <p class="section-sub">ご希望に合わせて、以下の内容を追加できます。料金はご依頼内容に応じてお見積もりします。</p>
+
+  <div class="addon-grid">
+    <div class="addon-card">
+      <div class="addon-name">小物追加</div>
+      <span class="status-pill open" style="margin-bottom:0.4rem;display:inline-flex;width:fit-content;"><span class="dot"></span>受付中</span>
+      <div class="addon-price">1500¥〜 </div>
+      <div class="addon-desc">武器、アクセサリー、手に持っている物、キャラクターが触れている物など。複雑さに応じてお見積もりします。</div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-name">キャラクター複雑度</div>
+      <span class="status-pill open" style="margin-bottom:0.4rem;display:inline-flex;width:fit-content;"><span class="dot"></span>受付中</span>
+      <div class="addon-price">7800¥〜 </div>
+      <div class="addon-desc">細かい模様、衣装レイヤーの多いデザイン、装飾の多い小物、特殊な体型・構造など、作画量が多い場合は追加料金が発生する場合があります。</div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-name">背景</div>
+      <span class="status-pill closed" style="margin-bottom:0.4rem;display:inline-flex;width:fit-content;">停止中</span>
+      <div class="addon-price">15600¥〜 </div>
+      <div class="addon-desc">キャラクターのシーンに合わせた描き込み背景です。受付状況は変動するため、ご依頼前にステータスをご確認ください。</div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-name">追加キャラクター</div>
+      <span class="status-pill open" style="margin-bottom:0.4rem;display:inline-flex;width:fit-content;"><span class="dot"></span>受付中</span>
+      <div class="addon-price">要相談</div>
+      <div class="addon-desc">追加キャラクターは、基本的に同じプランの新規キャラクターとしてお見積もりします。1枚につき最大4キャラクターまで対応可能です。画面外・一部のみ見えるキャラクターは別途お見積もりになる場合があります。</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- LICENSE -->
+<section id="license">
+  <div class="section-label">✦ ライセンス</div>
+  <h2 class="section-title">追加ライセンス</h2>
+  <p class="section-sub">ご利用目的に合わせて、必要なライセンスをお選びください。</p>
+
+  <div class="addon-grid">
+    <div class="addon-card">
+      <div class="addon-name">個人利用ライセンス</div>
+      <span class="status-pill open" style="margin-bottom:0.4rem;display:inline-flex;width:fit-content;"><span class="dot"></span>標準</span>
+      <div class="addon-price">込み</div>
+      <div class="addon-desc">個人・非商用目的での使用権を付与します。壁紙、プロフィール画像、個人SNSへの投稿などにご利用いただけます。ただし、収益化を伴う使用は含まれません。</div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-name">収益化利用ライセンス</div>
+      <span class="status-pill open" style="margin-bottom:0.4rem;display:inline-flex;width:fit-content;"><span class="dot"></span>追加可</span>
+      <div class="addon-price">20%〜</div>
+      <div class="addon-desc">SNS・配信・コンテンツプラットフォーム上での収益化利用権を付与します。例：メンバーシップ、広告、収益が発生するコンテンツや事業関連素材への使用など。</div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-name">商用利用ライセンス</div>
+      <span class="status-pill open" style="margin-bottom:0.4rem;display:inline-flex;width:fit-content;"><span class="dot"></span>追加可</span>
+      <div class="addon-price">100%〜</div>
+      <div class="addon-desc">収益化利用ライセンスを含み、販売・配布を目的とした物理商品またはデジタル商品への使用権を付与します。例：印刷物、アパレル、アクセサリー、ステッカー、アクリルキーホルダー、その他グッズなど。</div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-name">非公開対応 / NDA</div>
+      <span class="status-pill open" style="margin-bottom:0.4rem;display:inline-flex;width:fit-content;"><span class="dot"></span>追加可</span>
+      <div class="addon-price">20%〜</div>
+      <div class="addon-desc">ご依頼作品を非公開にし、作者がSNS・宣伝素材・ポートフォリオなどに掲載、公開、使用しない形で対応します。</div>
+      <div class="addon-desc" style="margin-top:0.3rem;">作品を実績として公開できなくなるため、追加料金をいただいております。</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- DELIVERABLES & PAYMENT -->
+<section id="deliverables">
+  <div class="section-label">✦ 納品内容・お支払い</div>
+  <h2 class="section-title">納品内容</h2>
+  <p class="section-sub">すべてのご依頼には以下のファイルが含まれます。お支払いは安全で使いやすいプラットフォームを通じて行います。</p>
+
+  <div class="two-col">
+    <div class="info-card">
+      <h3>📁 納品ファイル</h3>
+      <ul class="info-list">
+        <li>高解像度PNG（フル書き出しサイズ / 300dpi）</li>
+        <li>統合済みイラストを含むPSDファイル</li>
+        <li>Google Driveにて納品</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>💳 お支払い方法</h3>
+      <ul class="info-list">
+        <li>お支払いは<strong>USD</strong>のみ対応しています</li>
+        <li><strong>Wise</strong> — 推奨。国際送金の為替レートや手数料が比較的良い場合があります</li>
+        <li><strong>PayPal</strong> — ご希望の場合のみ対応可能です。Wiseと比べて手数料が高く、為替レートが不利になる場合があります</li>
+        <li>ラフ確認後、仕上げ作業に入る前に<strong>全額お支払い</strong>をお願いしています</li>
+        <li>お問い合わせ段階ではお支払い不要です</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-label">✦ ご依頼の流れ</div>
+  <h2 class="section-title">制作の流れ</h2>
+  <p class="section-sub">お問い合わせから納品まで、以下の流れで進行します。</p>
+
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div class="step-title">お問い合わせ</div>
+      <div class="step-desc">オーダーフォームにキャラクター情報、資料、希望プランをご記入ください。</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div class="step-title">内容確認</div>
+      <div class="step-desc">ご依頼内容と受付状況を確認し、最終のお見積もりをご案内します。</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div class="step-title">ラフ</div>
+      <div class="step-desc">確認用のラフをお送りします。次の工程に進む前に、修正点があればお知らせください。</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <div class="step-title">お支払い</div>
+      <div class="step-desc">ラフ確定後、作業を進める前に全額お支払いをお願いしています。</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">05</div>
+      <div class="step-title">納品</div>
+      <div class="step-desc">完成データをお送りします。軽微な仕上げ調整はこの段階で対応可能です。</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TOS -->
+<section id="tos">
+  <div class="section-label">✦ 利用規約</div>
+  <h2 class="section-title">ご依頼前の確認事項</h2>
+  <p class="section-sub">ご依頼いただいた時点で、以下の内容に同意したものとみなします。ご依頼前に必ずご確認ください。</p>
+
+  <div class="tos-grid">
+    <div class="tos-item">
+      <span class="tos-num">01</span>
+      <h4>使用範囲</h4>
+      <p>ご依頼作品には標準で個人利用ライセンスが含まれます。SNS投稿、アイコン使用、個人鑑賞用の印刷などが可能です。追加ライセンスを購入せずに、販売・再配布・商用利用することはできません。</p>
+    </div>
+    <div class="tos-item">
+      <span class="tos-num">02</span>
+      <h4>作者の権利</h4>
+      <p>完成作品は、ポートフォリオ、SNS、宣伝素材などに掲載する権利を作者が保持します。非公開希望・NDA対応が必要な場合は、ご依頼時に必ずお知らせください。</p>
+    </div>
+    <div class="tos-item">
+      <span class="tos-num">03</span>
+      <h4>お支払い・返金</h4>
+      <p>ラフ確定後、仕上げ作業に入る前に全額お支払いをお願いしています。お支払い後に作業を開始した場合、返金はできません。作業開始前であれば、状況に応じて一部返金を検討する場合があります。</p>
+    </div>
+    <div class="tos-item">
+      <span class="tos-num">04</span>
+      <h4>修正について</h4>
+      <p>ラフ段階で最大2回まで修正可能です。仕上げ段階以降の大幅な変更（ポーズ、構図、キャラクター変更など）は追加料金が発生する場合があります。納品時の軽微な調整は対応可能です。</p>
+    </div>
+    <div class="tos-item">
+      <span class="tos-num">05</span>
+      <h4>納期について</h4>
+      <p>納期はご依頼内容の複雑さや受付状況によって変動します。目安のスケジュールは内容確認時にご案内します。</p>
+    </div>
+    <div class="tos-item">
+      <span class="tos-num">06</span>
+      <h4>お受けできるもの・できないもの</h4>
+      <p>対応可能：OC、ファンアート、VTuber、ケモノ（シンプルなもの）、NSFW（成人向け表現）。</p>
+      <p>対応不可：ヘイト・差別表現、過度な暴力・グロ表現、細かいメカ・複雑なケモノ、盗作・トレスに近いご依頼、生成AIおよびAI派生素材を使用したご依頼。</p>
+    </div>
+    <div class="tos-item">
+      <span class="tos-num">07</span>
+      <h4>キャラクター資料</h4>
+      <p>キャラクターの資料画像は、できるだけ分かりやすいものをご用意ください。情報が多いほど、イメージに近い仕上がりにしやすくなります。資料不足や曖昧な指定によって発生した差異について、作者は責任を負いかねます。</p>
+    </div>
+    <div class="tos-item">
+      <span class="tos-num">08</span>
+      <h4>AI・複製に関する禁止事項</h4>
+      <p>作者の作品をAIモデル、データセット、または類似システムの学習に使用することは禁止です。明確な書面許可なく、ご依頼作品を個人利用の範囲を超えて複製、トレース、再配布することはできません。</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CTA -->
+<section style="padding: 3rem 2rem;">
+  <div class="cta-section" id="order">
+    <div class="section-label">✦ ご依頼はこちら</div>
+    <h2>ご依頼<br><em>はこちら</em></h2>
+    <p>オーダーフォームをご記入ください。数日以内に、お見積もりと受付可否についてご連絡します。</p>
+    <a href="https://tally.so/r/68rozk" class="btn-cta">お問い合わせする ✦</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p> all artwork © fuemi · terms apply</p>
+  <p style="margin-top: 0.4rem;"><a href="mailto:business.fuemi@gmail.com">business.fuemi@gmail.com</a> · <a href="https://x.com/fuemi_">twitter / x @fuemi_</a></p>
+</footer>
+
+<!-- LIGHTBOX OVERLAY -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="画像プレビュー">
+  <button id="lightbox-close" aria-label="プレビューを閉じる">✕</button>
+  <img id="lightbox-img" src="" alt="コミッションサンプルのプレビュー">
+</div>
+
+<script>
+  const lightbox    = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn    = document.getElementById('lightbox-close');
+
+  function initLightbox() {
+    document.querySelectorAll('.card-image').forEach(wrap => {
+      const img = wrap.querySelector('img');
+      if (!img) return; // skip placeholders
+      wrap.classList.add('lightbox-trigger');
+      wrap.addEventListener('click', () => openLightbox(img.src, img.alt));
+    });
+  }
+
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || 'コミッションサンプル';
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(() => { lightboxImg.src = ''; }, 200);
+  }
+
+  // Close on overlay click (not on the image itself)
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+
+  // Close on Escape key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+  });
+
+  initLightbox();
+</script>
+
+</body>
+</html>
